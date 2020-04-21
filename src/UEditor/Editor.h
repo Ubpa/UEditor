@@ -1,11 +1,11 @@
 #pragma once
 
-#include <UScene/core/core>
+#include <UScene/core.h>
 
 namespace Ubpa {
 	class Editor {
 	public:
-		Read<Editor, SObj*> roamerobj;
+		Read<Editor, Scene*> scene;
 
 		static Editor& Instance() noexcept {
 			static Editor instance;
@@ -13,10 +13,11 @@ namespace Ubpa {
 		}
 
 		void SetCamera(SObj* cameraobj);
-		void Update();
+
+		static void OnRegist();
 
 	private:
 		Editor();
-		Scene scene{ "Editor Scene" };
+		~Editor();
 	};
 }
