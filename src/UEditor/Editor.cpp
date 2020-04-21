@@ -2,6 +2,7 @@
 
 #include "Cmpt/Roamer.h"
 #include "Cmpt/Hierarchy.h"
+#include "Cmpt/Inspector.h"
 
 #include <UScene/core.h>
 
@@ -12,7 +13,7 @@ Editor::Editor()
 	: scene{ new Scene{ "Editor Scene" } }
 {
 	scene->CreateSObj<Cmpt::Camera, Cmpt::Roamer>("roamer");
-	scene->CreateSObj<Cmpt::Hierarchy>("hierarchy");
+	scene->CreateSObj<Cmpt::Hierarchy, Cmpt::Inspector>("hierarchy_inspector");
 }
 
 Editor::~Editor() {
@@ -34,4 +35,5 @@ void Editor::SetCamera(SObj* cameraobj) {
 void Editor::OnRegist() {
 	CmptRegister::Instance().Regist<Cmpt::Roamer>();
 	CmptRegister::Instance().Regist<Cmpt::Hierarchy>();
+	CmptRegister::Instance().Regist<Cmpt::Inspector>();
 }
